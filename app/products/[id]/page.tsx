@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import ProductCard from "../../components/ProductCard";
 import Stars from "../../components/Stars";
@@ -37,7 +38,18 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           }}
         >
           {product.badge && <span className="card-badge">{product.badge}</span>}
-          <span className="detail-emoji">{product.emoji}</span>
+          {product.image ? (
+            <Image
+              src={product.image}
+              alt={product.name}
+              width={720}
+              height={540}
+              priority
+              className="detail-photo"
+            />
+          ) : (
+            <span className="detail-emoji">{product.emoji}</span>
+          )}
         </div>
 
         <div className="detail-body">
@@ -48,23 +60,32 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           <span className="detail-price">${product.price}</span>
           <p className="detail-desc">{product.description}</p>
 
-          <h2 className="detail-specs-title">Specs</h2>
-          <ul className="detail-specs">
-            {product.specs.map((spec) => (
-              <li key={spec}>{spec}</li>
-            ))}
-          </ul>
+          <div className="detail-specs">
+            <h2>Key specs</h2>
+            <ul>
+              {product.specs.map((spec) => (
+                <li key={spec}>{spec}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="detail-actions">
+            <button type="button" className="btn btn-primary">
+              Add to cart
+            </button>
+            <Link href="/" className="btn btn-ghost">
+              Back to catalog
+            </Link>
+          </div>
         </div>
       </article>
 
       {related.length > 0 && (
         <section className="related">
-          <div className="section-head">
-            <h2 className="section-title">More in {product.category}</h2>
-          </div>
+          <h2 className="related-title">More in {product.category}</h2>
           <div className="grid">
-            {related.map((p) => (
-              <ProductCard key={p.id} product={p} />
+            {related.map((item) => (
+              <ProductCard key={item.id} product={item} />
             ))}
           </div>
         </section>

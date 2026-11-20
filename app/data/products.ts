@@ -6,6 +6,7 @@ export interface Product {
   price: number;
   category: "Sneakers" | "Audio" | "Wearables" | "Gadgets";
   emoji: string;
+  image: string; // High-resolution photo
   accent: string; // CSS color used for the card art background
   accent2: string; // second color so the art can be a gradient
   rating: number; // 0 to 5, shown as stars
@@ -22,6 +23,7 @@ export const products: Product[] = [
     price: 129,
     category: "Sneakers",
     emoji: "👟",
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80",
     accent: "#6c8cff",
     accent2: "#9db5ff",
     rating: 4.6,
@@ -37,6 +39,7 @@ export const products: Product[] = [
     price: 149,
     category: "Sneakers",
     emoji: "🥾",
+    image: "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=800&q=80",
     accent: "#2f9e6f",
     accent2: "#5fd1a0",
     rating: 4.4,
@@ -51,6 +54,7 @@ export const products: Product[] = [
     price: 89,
     category: "Audio",
     emoji: "🎧",
+    image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80",
     accent: "#a06cff",
     accent2: "#c9a6ff",
     rating: 4.7,
@@ -66,6 +70,7 @@ export const products: Product[] = [
     price: 59,
     category: "Audio",
     emoji: "🔊",
+    image: "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80",
     accent: "#e8820c",
     accent2: "#ffb259",
     rating: 4.2,
@@ -80,6 +85,7 @@ export const products: Product[] = [
     price: 199,
     category: "Wearables",
     emoji: "⌚",
+    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
     accent: "#d64d7a",
     accent2: "#ff85ab",
     rating: 4.8,
@@ -95,6 +101,7 @@ export const products: Product[] = [
     price: 69,
     category: "Wearables",
     emoji: "📿",
+    image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?auto=format&fit=crop&w=800&q=80",
     accent: "#1fae9e",
     accent2: "#5fe0d1",
     rating: 4.1,
@@ -109,6 +116,7 @@ export const products: Product[] = [
     price: 49,
     category: "Gadgets",
     emoji: "🔋",
+    image: "https://images.unsplash.com/photo-1609592426867-009c95355444?auto=format&fit=crop&w=800&q=80",
     accent: "#4b63d6",
     accent2: "#7d92ff",
     rating: 4.5,
@@ -123,6 +131,7 @@ export const products: Product[] = [
     price: 119,
     category: "Gadgets",
     emoji: "📷",
+    image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=80",
     accent: "#e85d5d",
     accent2: "#ff9090",
     rating: 4.3,

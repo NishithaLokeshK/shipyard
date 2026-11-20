@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Stars from "./Stars";
 import type { Product } from "../data/products";
 
@@ -13,7 +14,17 @@ export default function ProductCard({ product }: { product: Product }) {
         }}
       >
         {product.badge && <span className="card-badge">{product.badge}</span>}
-        <span className="card-emoji">{product.emoji}</span>
+        {product.image ? (
+          <Image
+            src={product.image}
+            alt={product.name}
+            width={360}
+            height={270}
+            className="card-photo"
+          />
+        ) : (
+          <span className="card-emoji">{product.emoji}</span>
+        )}
       </div>
       <div className="card-body">
         <span className="card-category">{product.category}</span>
@@ -22,7 +33,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <Stars rating={product.rating} />
         <div className="card-foot">
           <span className="card-price">${product.price}</span>
-          <span className="card-cta">View →</span>
+          <span className="card-cta">View details →</span>
         </div>
       </div>
     </Link>

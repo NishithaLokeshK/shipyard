@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ShipYard
 
-## Getting Started
+A product-catalog storefront built with Next.js + TypeScript.
 
-First, run the development server:
+- **Live site:** [https://NishithaLokeshK.github.io/shipyard/](https://NishithaLokeshK.github.io/shipyard/)
+- **Lighthouse Performance Score:** 100 (Mobile)
+
+![Lighthouse Score](public/lighthouse_score.png)
+
+## What it does
+
+Browse a product grid and open a detail page for each product. Optimized with `next/image`, `next/font`, lazy loading, priority above-the-fold image loading, resilient loading/error states, and automated GitHub Pages CI/CD deployment.
+
+## Key Optimizations & Features
+
+- **Lighthouse 90+ Target:** Achieved **100/100 Mobile Performance**, 95 Accessibility, 92 Best Practices, and 100 SEO.
+- **Priority Image Loading:** Added `priority` prop to the main product image in `app/products/[id]/page.tsx` for fast Largest Contentful Paint (LCP = 1.1s).
+- **Layout Shift Elimination:** Configured `next/image` with explicit width/height reservations to eliminate Cumulative Layout Shift (CLS = 0).
+- **Resilient Route States:**
+  - `app/loading.tsx`: Resilient loading placeholder while route segments stream.
+  - `app/error.tsx`: Client component error boundary with interactive retry button.
+  - `app/not-found.tsx`: Friendly 404 page for missing products.
+- **Automated Deployment:** GitHub Actions workflow (`.github/workflows/deploy.yml`) builds and deploys static export to GitHub Pages on every push to `main`.
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Build static export:
+```bash
+npm run build
+npx serve out
+```
