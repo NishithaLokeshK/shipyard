@@ -1,9 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import ProductCard from "../../components/ProductCard";
 import Stars from "../../components/Stars";
 import { getProduct, products, relatedProducts } from "../../data/products";
+
+// next/dynamic: Lazy-load heavy interactive reviews component to keep initial bundle light
+const ProductReviews = dynamic(
+  () => import("../../components/ProductReviews"),
+  {
+    loading: () => <p className="status">Loading customer reviews…</p>,
+    ssr: false, // deferred client-side hydration
+  }
+);
 
 // Pre-build one static page per product at build time.
 export function generateStaticParams() {
@@ -77,6 +87,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               Back to catalog
             </Link>
           </div>
+
+          {/* Lazy-loaded heavy component */}
+          <ProductReviews rating={product.rating} />
         </div>
       </article>
 
